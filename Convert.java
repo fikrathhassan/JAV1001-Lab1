@@ -6,6 +6,7 @@ Program         : Mobile Application Development (MAPD)
 
 */
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Convert {
@@ -22,7 +23,16 @@ public class Convert {
         // Read input from user
         System.out.println();
         System.out.print("Enter a value to convert: ");
-        usrMeasure = usrInput.nextDouble();
+
+        // Check user input a number
+        try {
+            usrMeasure = usrInput.nextDouble();
+        } catch (InputMismatchException e) {
+            usrInput.close();
+            System.out.println("Please input a number!");
+            return;
+        }
+
         System.out.print("Enter the current unit of measure: ");
         usrUnit = usrInput.next();
         usrUnit = usrUnit.toLowerCase();
